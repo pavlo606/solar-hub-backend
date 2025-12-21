@@ -1,10 +1,10 @@
 import { Controller, Get, UseGuards, Req, Patch, Body } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { type Request } from 'express';
-import { JwtAuthGuard } from '@/auth/guards/jwt-auth.guard';
-import { RolesGuard } from '@/auth/guards/roles.guard';
-import { Roles } from '@/auth/roles.decorator';
-import { Role } from '@/auth/roles.enum';
+import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
+import { RolesGuard } from '@/modules/auth/guards/roles.guard';
+import { Roles } from '@/modules/auth/roles/roles.decorator';
+import { Role } from '@/modules/auth/roles/roles.enum';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserService } from './user.service';
 

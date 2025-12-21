@@ -6,7 +6,7 @@ import {
 } from "@nestjs/common";
 import * as bcrypt from "bcrypt";
 import { JwtService } from "@nestjs/jwt";
-import { UserService } from "@/user/user.service";
+import { UserService } from "@/modules/user/user.service";
 import { PrismaService } from "src/prisma/prisma.service";
 
 @Injectable()
@@ -27,7 +27,7 @@ export class AuthService {
             username,
             email,
             password_hash: hashed,
-            role: "User",
+            role: "Admin",
         });
 
         const tokens = await this.getTokens(user.id, user.email, user.role);

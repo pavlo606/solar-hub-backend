@@ -31,5 +31,3 @@ Just run this command
 ```bash
 npm run start:dev
 ```
-
-## 
