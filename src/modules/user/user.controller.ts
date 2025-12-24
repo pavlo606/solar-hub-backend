@@ -19,7 +19,7 @@ export class UserController {
   @ApiResponse({ status: 200, description: 'Returns user data' })
   @ApiResponse({ status: 401, description: 'Invalid credentionals' })
   async getMe(@Req() req: Request) {
-    const user = req.user as { userId: number };
+    const user = req.user as { userId: string };
     return this.userService.findByIdSafe(user.userId);
   }
 
@@ -40,7 +40,7 @@ export class UserController {
   @ApiResponse({ status: 200, description: 'User data changed' })
   @ApiResponse({ status: 401, description: 'Invalid credentionals' })
   async updateUser(@Req() req: Request, @Body() dto: UpdateUserDto) {
-    const user = req.user as { userId: number };
+    const user = req.user as { userId: string };
     return this.userService.update(user.userId, dto);
   }
 }

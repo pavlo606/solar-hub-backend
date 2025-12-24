@@ -116,7 +116,7 @@ export class AuthController {
   @ApiResponse({ status: 401, description: "Old password didn't match" })
   @ApiResponse({ status: 404, description: 'User not found' })
   async changePasswor(@Req() req: Request, @Body() dto: ChangePasswordDto) {
-    const user = req.user as { userId: number };
+    const user = req.user as { userId: string };
     await this.authService.changePassword(
       user.userId,
       dto.oldPassword,
@@ -132,7 +132,7 @@ export class AuthController {
   @ApiResponse({ status: 201, description: 'Logged out' })
   @ApiResponse({ status: 401, description: 'Invalid credentionals' })
   async logout(@Req() req: Request, @Res({ passthrough: true }) res: Response) {
-    const user = req.user as { userId: number };
+    const user = req.user as { userId: string };
     await this.authService.logout(user.userId);
 
     res.clearCookie('refreshToken', {
@@ -159,7 +159,7 @@ export class AuthController {
     @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
   ) {
-    const user = req.user as { userId: number };
+    const user = req.user as { userId: string };
     await this.authService.logoutDelete(user.userId);
 
     res.clearCookie('refreshToken', {

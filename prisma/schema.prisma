@@ -9,7 +9,7 @@ datasource db {
 }
 
 model User {
-  id            Int      @id @default(autoincrement())
+  id            String   @id @default(uuid())
   email         String   @unique
   username      String?
   password_hash String
@@ -22,4 +22,50 @@ model User {
 enum Role {
   User
   Admin
+}
+
+model Client {
+  id        String   @id @default(uuid())
+  name      String
+  phone     String?
+  email     String?
+  address   String?
+  notes     String?
+
+  isActive  Boolean  @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  createdBy String?
+
+  projects  Project[]
+}
+
+model Project {
+  id          String        @id @default(uuid())
+  name        String
+  description String?
+
+  status      ProjectStatus @default(DRAFT)
+
+  clientId    String
+  client      Client        @relation(fields: [clientId], references: [id])
+
+  startDate   DateTime?
+  endDate     DateTime?
+  totalPrice  Decimal?
+
+  isActive    Boolean       @default(true)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  createdBy   String?
+}
+
+enum ProjectStatus {
+  DRAFT
+  APPROVED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
 }

@@ -19,12 +19,12 @@ export class UserService {
     });
   }
 
-  async findByIdSafe(id: number) {
+  async findByIdSafe(id: string) {
     const user = await this.prisma.user.findUnique({ where: { id } });
     return this.getSafeUserData(user);
   }
 
-  async findById(id: number) {
+  async findById(id: string) {
     return this.prisma.user.findUnique({ where: { id } });
   }
 
@@ -34,7 +34,7 @@ export class UserService {
   }
 
   async updateRefreshToken(
-    id: number,
+    id: string,
     data: Partial<{ refreshToken: string | null }>,
   ) {
     return this.prisma.user.update({
@@ -43,7 +43,7 @@ export class UserService {
     });
   }
 
-  async update(id: number, data: UpdateUserDto) {
+  async update(id: string, data: UpdateUserDto) {
     if (
       data.username === undefined &&
       data.email === undefined &&
@@ -58,7 +58,7 @@ export class UserService {
     });
   }
 
-  async delete(id: number) {
+  async delete(id: string) {
     return this.prisma.user.delete({
       where: { id },
     });

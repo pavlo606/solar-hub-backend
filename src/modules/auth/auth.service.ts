@@ -62,7 +62,7 @@ export class AuthService {
         return tokens;
     }
 
-    async changePassword(user_id: number, oldPassword: string, password: string) {
+    async changePassword(user_id: string, oldPassword: string, password: string) {
         const user = await this.prisma.user.findUnique({ where: { id: user_id } });
         if (!user) throw new NotFoundException("User not found")
 
@@ -73,20 +73,20 @@ export class AuthService {
         return this.usersService.update(user_id, {password_hash: hashed});
     }
 
-    async logout(userId: number) {
+    async logout(userId: string) {
         return this.usersService.updateRefreshToken(userId, {
             refreshToken: null,
         });
     }
 
-    async logoutDelete(userId: number) {
+    async logoutDelete(userId: string) {
         await this.usersService.updateRefreshToken(userId, {
             refreshToken: null,
         });
         return this.usersService.delete(userId);
     }
 
-    private async getTokens(userId: number, email: string, role) {
+    private async getTokens(userId: string, email: string, role) {
         const payload = { sub: userId, email, role };
         const accessToken = await this.jwtService.signAsync(payload, {
             expiresIn: "15m",
@@ -99,7 +99,7 @@ export class AuthService {
         return { accessToken, refreshToken };
     }
 
-    private async updateRefreshToken(userId: number, refreshToken: string) {
+    private async updateRefreshToken(userId: string, refreshToken: string) {
         const hashed = await bcrypt.hash(refreshToken, 10);
         await this.usersService.updateRefreshToken(userId, {
             refreshToken: hashed,
