@@ -37,46 +37,46 @@ export type ProjectSumAggregateOutputType = {
 export type ProjectMinAggregateOutputType = {
   id: string | null
   name: string | null
-  description: string | null
   status: $Enums.ProjectStatus | null
   clientId: string | null
   startDate: Date | null
   endDate: Date | null
   totalPrice: runtime.Decimal | null
-  isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
   createdBy: string | null
+  description: string | null
+  isActive: boolean | null
 }
 
 export type ProjectMaxAggregateOutputType = {
   id: string | null
   name: string | null
-  description: string | null
   status: $Enums.ProjectStatus | null
   clientId: string | null
   startDate: Date | null
   endDate: Date | null
   totalPrice: runtime.Decimal | null
-  isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
   createdBy: string | null
+  description: string | null
+  isActive: boolean | null
 }
 
 export type ProjectCountAggregateOutputType = {
   id: number
   name: number
-  description: number
   status: number
   clientId: number
   startDate: number
   endDate: number
   totalPrice: number
-  isActive: number
   createdAt: number
   updatedAt: number
   createdBy: number
+  description: number
+  isActive: number
   _all: number
 }
 
@@ -92,46 +92,46 @@ export type ProjectSumAggregateInputType = {
 export type ProjectMinAggregateInputType = {
   id?: true
   name?: true
-  description?: true
   status?: true
   clientId?: true
   startDate?: true
   endDate?: true
   totalPrice?: true
-  isActive?: true
   createdAt?: true
   updatedAt?: true
   createdBy?: true
+  description?: true
+  isActive?: true
 }
 
 export type ProjectMaxAggregateInputType = {
   id?: true
   name?: true
-  description?: true
   status?: true
   clientId?: true
   startDate?: true
   endDate?: true
   totalPrice?: true
-  isActive?: true
   createdAt?: true
   updatedAt?: true
   createdBy?: true
+  description?: true
+  isActive?: true
 }
 
 export type ProjectCountAggregateInputType = {
   id?: true
   name?: true
-  description?: true
   status?: true
   clientId?: true
   startDate?: true
   endDate?: true
   totalPrice?: true
-  isActive?: true
   createdAt?: true
   updatedAt?: true
   createdBy?: true
+  description?: true
+  isActive?: true
   _all?: true
 }
 
@@ -224,16 +224,16 @@ export type ProjectGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 export type ProjectGroupByOutputType = {
   id: string
   name: string
-  description: string | null
   status: $Enums.ProjectStatus
   clientId: string
   startDate: Date | null
   endDate: Date | null
   totalPrice: runtime.Decimal | null
-  isActive: boolean
   createdAt: Date
   updatedAt: Date
   createdBy: string | null
+  description: string | null
+  isActive: boolean
   _count: ProjectCountAggregateOutputType | null
   _avg: ProjectAvgAggregateOutputType | null
   _sum: ProjectSumAggregateOutputType | null
@@ -262,33 +262,35 @@ export type ProjectWhereInput = {
   NOT?: Prisma.ProjectWhereInput | Prisma.ProjectWhereInput[]
   id?: Prisma.StringFilter<"Project"> | string
   name?: Prisma.StringFilter<"Project"> | string
-  description?: Prisma.StringNullableFilter<"Project"> | string | null
   status?: Prisma.EnumProjectStatusFilter<"Project"> | $Enums.ProjectStatus
   clientId?: Prisma.StringFilter<"Project"> | string
   startDate?: Prisma.DateTimeNullableFilter<"Project"> | Date | string | null
   endDate?: Prisma.DateTimeNullableFilter<"Project"> | Date | string | null
   totalPrice?: Prisma.DecimalNullableFilter<"Project"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  isActive?: Prisma.BoolFilter<"Project"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   createdBy?: Prisma.StringNullableFilter<"Project"> | string | null
+  description?: Prisma.StringNullableFilter<"Project"> | string | null
+  isActive?: Prisma.BoolFilter<"Project"> | boolean
   client?: Prisma.XOR<Prisma.ClientScalarRelationFilter, Prisma.ClientWhereInput>
+  projectMaterials?: Prisma.ProjectMaterialListRelationFilter
 }
 
 export type ProjectOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  description?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   clientId?: Prisma.SortOrder
   startDate?: Prisma.SortOrderInput | Prisma.SortOrder
   endDate?: Prisma.SortOrderInput | Prisma.SortOrder
   totalPrice?: Prisma.SortOrderInput | Prisma.SortOrder
-  isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  isActive?: Prisma.SortOrder
   client?: Prisma.ClientOrderByWithRelationInput
+  projectMaterials?: Prisma.ProjectMaterialOrderByRelationAggregateInput
 }
 
 export type ProjectWhereUniqueInput = Prisma.AtLeast<{
@@ -297,32 +299,33 @@ export type ProjectWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.ProjectWhereInput[]
   NOT?: Prisma.ProjectWhereInput | Prisma.ProjectWhereInput[]
   name?: Prisma.StringFilter<"Project"> | string
-  description?: Prisma.StringNullableFilter<"Project"> | string | null
   status?: Prisma.EnumProjectStatusFilter<"Project"> | $Enums.ProjectStatus
   clientId?: Prisma.StringFilter<"Project"> | string
   startDate?: Prisma.DateTimeNullableFilter<"Project"> | Date | string | null
   endDate?: Prisma.DateTimeNullableFilter<"Project"> | Date | string | null
   totalPrice?: Prisma.DecimalNullableFilter<"Project"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  isActive?: Prisma.BoolFilter<"Project"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   createdBy?: Prisma.StringNullableFilter<"Project"> | string | null
+  description?: Prisma.StringNullableFilter<"Project"> | string | null
+  isActive?: Prisma.BoolFilter<"Project"> | boolean
   client?: Prisma.XOR<Prisma.ClientScalarRelationFilter, Prisma.ClientWhereInput>
+  projectMaterials?: Prisma.ProjectMaterialListRelationFilter
 }, "id">
 
 export type ProjectOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  description?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   clientId?: Prisma.SortOrder
   startDate?: Prisma.SortOrderInput | Prisma.SortOrder
   endDate?: Prisma.SortOrderInput | Prisma.SortOrder
   totalPrice?: Prisma.SortOrderInput | Prisma.SortOrder
-  isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  isActive?: Prisma.SortOrder
   _count?: Prisma.ProjectCountOrderByAggregateInput
   _avg?: Prisma.ProjectAvgOrderByAggregateInput
   _max?: Prisma.ProjectMaxOrderByAggregateInput
@@ -336,120 +339,124 @@ export type ProjectScalarWhereWithAggregatesInput = {
   NOT?: Prisma.ProjectScalarWhereWithAggregatesInput | Prisma.ProjectScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Project"> | string
   name?: Prisma.StringWithAggregatesFilter<"Project"> | string
-  description?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
   status?: Prisma.EnumProjectStatusWithAggregatesFilter<"Project"> | $Enums.ProjectStatus
   clientId?: Prisma.StringWithAggregatesFilter<"Project"> | string
   startDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Project"> | Date | string | null
   endDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Project"> | Date | string | null
   totalPrice?: Prisma.DecimalNullableWithAggregatesFilter<"Project"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  isActive?: Prisma.BoolWithAggregatesFilter<"Project"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Project"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Project"> | Date | string
   createdBy?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
+  description?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
+  isActive?: Prisma.BoolWithAggregatesFilter<"Project"> | boolean
 }
 
 export type ProjectCreateInput = {
   id?: string
   name: string
-  description?: string | null
   status?: $Enums.ProjectStatus
   startDate?: Date | string | null
   endDate?: Date | string | null
   totalPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
+  description?: string | null
+  isActive?: boolean
   client: Prisma.ClientCreateNestedOneWithoutProjectsInput
+  projectMaterials?: Prisma.ProjectMaterialCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectUncheckedCreateInput = {
   id?: string
   name: string
-  description?: string | null
   status?: $Enums.ProjectStatus
   clientId: string
   startDate?: Date | string | null
   endDate?: Date | string | null
   totalPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
+  description?: string | null
+  isActive?: boolean
+  projectMaterials?: Prisma.ProjectMaterialUncheckedCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   totalPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   client?: Prisma.ClientUpdateOneRequiredWithoutProjectsNestedInput
+  projectMaterials?: Prisma.ProjectMaterialUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
   clientId?: Prisma.StringFieldUpdateOperationsInput | string
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   totalPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  projectMaterials?: Prisma.ProjectMaterialUncheckedUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectCreateManyInput = {
   id?: string
   name: string
-  description?: string | null
   status?: $Enums.ProjectStatus
   clientId: string
   startDate?: Date | string | null
   endDate?: Date | string | null
   totalPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
+  description?: string | null
+  isActive?: boolean
 }
 
 export type ProjectUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   totalPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type ProjectUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
   clientId?: Prisma.StringFieldUpdateOperationsInput | string
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   totalPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type ProjectListRelationFilter = {
@@ -465,16 +472,16 @@ export type ProjectOrderByRelationAggregateInput = {
 export type ProjectCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  description?: Prisma.SortOrder
   status?: Prisma.SortOrder
   clientId?: Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
   totalPrice?: Prisma.SortOrder
-  isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
 }
 
 export type ProjectAvgOrderByAggregateInput = {
@@ -484,35 +491,40 @@ export type ProjectAvgOrderByAggregateInput = {
 export type ProjectMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  description?: Prisma.SortOrder
   status?: Prisma.SortOrder
   clientId?: Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
   totalPrice?: Prisma.SortOrder
-  isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
 }
 
 export type ProjectMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  description?: Prisma.SortOrder
   status?: Prisma.SortOrder
   clientId?: Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
   totalPrice?: Prisma.SortOrder
-  isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
 }
 
 export type ProjectSumOrderByAggregateInput = {
   totalPrice?: Prisma.SortOrder
+}
+
+export type ProjectScalarRelationFilter = {
+  is?: Prisma.ProjectWhereInput
+  isNot?: Prisma.ProjectWhereInput
 }
 
 export type ProjectCreateNestedManyWithoutClientInput = {
@@ -573,32 +585,48 @@ export type NullableDecimalFieldUpdateOperationsInput = {
   divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
+export type ProjectCreateNestedOneWithoutProjectMaterialsInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutProjectMaterialsInput, Prisma.ProjectUncheckedCreateWithoutProjectMaterialsInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutProjectMaterialsInput
+  connect?: Prisma.ProjectWhereUniqueInput
+}
+
+export type ProjectUpdateOneRequiredWithoutProjectMaterialsNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutProjectMaterialsInput, Prisma.ProjectUncheckedCreateWithoutProjectMaterialsInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutProjectMaterialsInput
+  upsert?: Prisma.ProjectUpsertWithoutProjectMaterialsInput
+  connect?: Prisma.ProjectWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProjectUpdateToOneWithWhereWithoutProjectMaterialsInput, Prisma.ProjectUpdateWithoutProjectMaterialsInput>, Prisma.ProjectUncheckedUpdateWithoutProjectMaterialsInput>
+}
+
 export type ProjectCreateWithoutClientInput = {
   id?: string
   name: string
-  description?: string | null
   status?: $Enums.ProjectStatus
   startDate?: Date | string | null
   endDate?: Date | string | null
   totalPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
+  description?: string | null
+  isActive?: boolean
+  projectMaterials?: Prisma.ProjectMaterialCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectUncheckedCreateWithoutClientInput = {
   id?: string
   name: string
-  description?: string | null
   status?: $Enums.ProjectStatus
   startDate?: Date | string | null
   endDate?: Date | string | null
   totalPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
+  description?: string | null
+  isActive?: boolean
+  projectMaterials?: Prisma.ProjectMaterialUncheckedCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectCreateOrConnectWithoutClientInput = {
@@ -633,142 +661,253 @@ export type ProjectScalarWhereInput = {
   NOT?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
   id?: Prisma.StringFilter<"Project"> | string
   name?: Prisma.StringFilter<"Project"> | string
-  description?: Prisma.StringNullableFilter<"Project"> | string | null
   status?: Prisma.EnumProjectStatusFilter<"Project"> | $Enums.ProjectStatus
   clientId?: Prisma.StringFilter<"Project"> | string
   startDate?: Prisma.DateTimeNullableFilter<"Project"> | Date | string | null
   endDate?: Prisma.DateTimeNullableFilter<"Project"> | Date | string | null
   totalPrice?: Prisma.DecimalNullableFilter<"Project"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  isActive?: Prisma.BoolFilter<"Project"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   createdBy?: Prisma.StringNullableFilter<"Project"> | string | null
+  description?: Prisma.StringNullableFilter<"Project"> | string | null
+  isActive?: Prisma.BoolFilter<"Project"> | boolean
+}
+
+export type ProjectCreateWithoutProjectMaterialsInput = {
+  id?: string
+  name: string
+  status?: $Enums.ProjectStatus
+  startDate?: Date | string | null
+  endDate?: Date | string | null
+  totalPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdBy?: string | null
+  description?: string | null
+  isActive?: boolean
+  client: Prisma.ClientCreateNestedOneWithoutProjectsInput
+}
+
+export type ProjectUncheckedCreateWithoutProjectMaterialsInput = {
+  id?: string
+  name: string
+  status?: $Enums.ProjectStatus
+  clientId: string
+  startDate?: Date | string | null
+  endDate?: Date | string | null
+  totalPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdBy?: string | null
+  description?: string | null
+  isActive?: boolean
+}
+
+export type ProjectCreateOrConnectWithoutProjectMaterialsInput = {
+  where: Prisma.ProjectWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutProjectMaterialsInput, Prisma.ProjectUncheckedCreateWithoutProjectMaterialsInput>
+}
+
+export type ProjectUpsertWithoutProjectMaterialsInput = {
+  update: Prisma.XOR<Prisma.ProjectUpdateWithoutProjectMaterialsInput, Prisma.ProjectUncheckedUpdateWithoutProjectMaterialsInput>
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutProjectMaterialsInput, Prisma.ProjectUncheckedCreateWithoutProjectMaterialsInput>
+  where?: Prisma.ProjectWhereInput
+}
+
+export type ProjectUpdateToOneWithWhereWithoutProjectMaterialsInput = {
+  where?: Prisma.ProjectWhereInput
+  data: Prisma.XOR<Prisma.ProjectUpdateWithoutProjectMaterialsInput, Prisma.ProjectUncheckedUpdateWithoutProjectMaterialsInput>
+}
+
+export type ProjectUpdateWithoutProjectMaterialsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  totalPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  client?: Prisma.ClientUpdateOneRequiredWithoutProjectsNestedInput
+}
+
+export type ProjectUncheckedUpdateWithoutProjectMaterialsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  clientId?: Prisma.StringFieldUpdateOperationsInput | string
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  totalPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type ProjectCreateManyClientInput = {
   id?: string
   name: string
-  description?: string | null
   status?: $Enums.ProjectStatus
   startDate?: Date | string | null
   endDate?: Date | string | null
   totalPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
+  description?: string | null
+  isActive?: boolean
 }
 
 export type ProjectUpdateWithoutClientInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   totalPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  projectMaterials?: Prisma.ProjectMaterialUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectUncheckedUpdateWithoutClientInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   totalPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  projectMaterials?: Prisma.ProjectMaterialUncheckedUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectUncheckedUpdateManyWithoutClientInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   totalPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
+
+/**
+ * Count Type ProjectCountOutputType
+ */
+
+export type ProjectCountOutputType = {
+  projectMaterials: number
+}
+
+export type ProjectCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  projectMaterials?: boolean | ProjectCountOutputTypeCountProjectMaterialsArgs
+}
+
+/**
+ * ProjectCountOutputType without action
+ */
+export type ProjectCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ProjectCountOutputType
+   */
+  select?: Prisma.ProjectCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * ProjectCountOutputType without action
+ */
+export type ProjectCountOutputTypeCountProjectMaterialsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProjectMaterialWhereInput
+}
 
 
 export type ProjectSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
-  description?: boolean
   status?: boolean
   clientId?: boolean
   startDate?: boolean
   endDate?: boolean
   totalPrice?: boolean
-  isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   createdBy?: boolean
+  description?: boolean
+  isActive?: boolean
   client?: boolean | Prisma.ClientDefaultArgs<ExtArgs>
+  projectMaterials?: boolean | Prisma.Project$projectMaterialsArgs<ExtArgs>
+  _count?: boolean | Prisma.ProjectCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
 
 export type ProjectSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
-  description?: boolean
   status?: boolean
   clientId?: boolean
   startDate?: boolean
   endDate?: boolean
   totalPrice?: boolean
-  isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   createdBy?: boolean
+  description?: boolean
+  isActive?: boolean
   client?: boolean | Prisma.ClientDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
 
 export type ProjectSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
-  description?: boolean
   status?: boolean
   clientId?: boolean
   startDate?: boolean
   endDate?: boolean
   totalPrice?: boolean
-  isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   createdBy?: boolean
+  description?: boolean
+  isActive?: boolean
   client?: boolean | Prisma.ClientDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
 
 export type ProjectSelectScalar = {
   id?: boolean
   name?: boolean
-  description?: boolean
   status?: boolean
   clientId?: boolean
   startDate?: boolean
   endDate?: boolean
   totalPrice?: boolean
-  isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   createdBy?: boolean
+  description?: boolean
+  isActive?: boolean
 }
 
-export type ProjectOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "status" | "clientId" | "startDate" | "endDate" | "totalPrice" | "isActive" | "createdAt" | "updatedAt" | "createdBy", ExtArgs["result"]["project"]>
+export type ProjectOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "status" | "clientId" | "startDate" | "endDate" | "totalPrice" | "createdAt" | "updatedAt" | "createdBy" | "description" | "isActive", ExtArgs["result"]["project"]>
 export type ProjectInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   client?: boolean | Prisma.ClientDefaultArgs<ExtArgs>
+  projectMaterials?: boolean | Prisma.Project$projectMaterialsArgs<ExtArgs>
+  _count?: boolean | Prisma.ProjectCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProjectIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   client?: boolean | Prisma.ClientDefaultArgs<ExtArgs>
@@ -781,20 +920,21 @@ export type $ProjectPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   name: "Project"
   objects: {
     client: Prisma.$ClientPayload<ExtArgs>
+    projectMaterials: Prisma.$ProjectMaterialPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     name: string
-    description: string | null
     status: $Enums.ProjectStatus
     clientId: string
     startDate: Date | null
     endDate: Date | null
     totalPrice: runtime.Decimal | null
-    isActive: boolean
     createdAt: Date
     updatedAt: Date
     createdBy: string | null
+    description: string | null
+    isActive: boolean
   }, ExtArgs["result"]["project"]>
   composites: {}
 }
@@ -1190,6 +1330,7 @@ readonly fields: ProjectFieldRefs;
 export interface Prisma__ProjectClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   client<T extends Prisma.ClientDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ClientDefaultArgs<ExtArgs>>): Prisma.Prisma__ClientClient<runtime.Types.Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  projectMaterials<T extends Prisma.Project$projectMaterialsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$projectMaterialsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectMaterialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1221,16 +1362,16 @@ export interface Prisma__ProjectClient<T, Null = never, ExtArgs extends runtime.
 export interface ProjectFieldRefs {
   readonly id: Prisma.FieldRef<"Project", 'String'>
   readonly name: Prisma.FieldRef<"Project", 'String'>
-  readonly description: Prisma.FieldRef<"Project", 'String'>
   readonly status: Prisma.FieldRef<"Project", 'ProjectStatus'>
   readonly clientId: Prisma.FieldRef<"Project", 'String'>
   readonly startDate: Prisma.FieldRef<"Project", 'DateTime'>
   readonly endDate: Prisma.FieldRef<"Project", 'DateTime'>
   readonly totalPrice: Prisma.FieldRef<"Project", 'Decimal'>
-  readonly isActive: Prisma.FieldRef<"Project", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Project", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Project", 'DateTime'>
   readonly createdBy: Prisma.FieldRef<"Project", 'String'>
+  readonly description: Prisma.FieldRef<"Project", 'String'>
+  readonly isActive: Prisma.FieldRef<"Project", 'Boolean'>
 }
     
 
@@ -1624,6 +1765,30 @@ export type ProjectDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Limit how many Projects to delete.
    */
   limit?: number
+}
+
+/**
+ * Project.projectMaterials
+ */
+export type Project$projectMaterialsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ProjectMaterial
+   */
+  select?: Prisma.ProjectMaterialSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ProjectMaterial
+   */
+  omit?: Prisma.ProjectMaterialOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProjectMaterialInclude<ExtArgs> | null
+  where?: Prisma.ProjectMaterialWhereInput
+  orderBy?: Prisma.ProjectMaterialOrderByWithRelationInput | Prisma.ProjectMaterialOrderByWithRelationInput[]
+  cursor?: Prisma.ProjectMaterialWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProjectMaterialScalarFieldEnum | Prisma.ProjectMaterialScalarFieldEnum[]
 }
 
 /**

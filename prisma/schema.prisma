@@ -19,47 +19,68 @@ model User {
   updatedAt     DateTime @updatedAt
 }
 
-enum Role {
-  User
-  Admin
-}
-
 model Client {
-  id        String   @id @default(uuid())
+  id        String    @id @default(uuid())
   name      String
   phone     String?
   email     String?
   address   String?
   notes     String?
-
-  isActive  Boolean  @default(true)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
   createdBy String?
-
+  isActive  Boolean   @default(true)
   projects  Project[]
 }
 
 model Project {
-  id          String        @id @default(uuid())
-  name        String
-  description String?
+  id               String            @id @default(uuid())
+  name             String
+  status           ProjectStatus     @default(DRAFT)
+  clientId         String
+  startDate        DateTime?
+  endDate          DateTime?
+  totalPrice       Decimal?
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  createdBy        String?
+  description      String?
+  isActive         Boolean           @default(true)
+  client           Client            @relation(fields: [clientId], references: [id])
+  projectMaterials ProjectMaterial[]
+}
 
-  status      ProjectStatus @default(DRAFT)
+model InventoryItem {
+  id           String            @id @default(uuid())
+  name         String
+  sku          String            @unique
+  unit         String
+  quantity     Int
+  reserved     Int               @default(0)
+  unitPrice    Decimal?
+  isActive     Boolean           @default(true)
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+  projectItems ProjectMaterial[]
+}
 
-  clientId    String
-  client      Client        @relation(fields: [clientId], references: [id])
+model ProjectMaterial {
+  id              String        @id @default(uuid())
+  projectId       String
+  inventoryItemId String
+  quantity        Int
+  reserved        Int
+  consumed        Int           @default(0)
+  createdAt       DateTime      @default(now())
+  inventoryItem   InventoryItem @relation(fields: [inventoryItemId], references: [id])
+  project         Project       @relation(fields: [projectId], references: [id])
 
-  startDate   DateTime?
-  endDate     DateTime?
-  totalPrice  Decimal?
+  @@unique([projectId, inventoryItemId])
+}
 
-  isActive    Boolean       @default(true)
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  createdBy   String?
+enum Role {
+  User
+  Admin
 }
 
 enum ProjectStatus {

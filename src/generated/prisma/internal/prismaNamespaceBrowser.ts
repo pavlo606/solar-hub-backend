@@ -53,7 +53,9 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   User: 'User',
   Client: 'Client',
-  Project: 'Project'
+  Project: 'Project',
+  InventoryItem: 'InventoryItem',
+  ProjectMaterial: 'ProjectMaterial'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -93,10 +95,10 @@ export const ClientScalarFieldEnum = {
   email: 'email',
   address: 'address',
   notes: 'notes',
-  isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  createdBy: 'createdBy'
+  createdBy: 'createdBy',
+  isActive: 'isActive'
 } as const
 
 export type ClientScalarFieldEnum = (typeof ClientScalarFieldEnum)[keyof typeof ClientScalarFieldEnum]
@@ -105,19 +107,48 @@ export type ClientScalarFieldEnum = (typeof ClientScalarFieldEnum)[keyof typeof 
 export const ProjectScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  description: 'description',
   status: 'status',
   clientId: 'clientId',
   startDate: 'startDate',
   endDate: 'endDate',
   totalPrice: 'totalPrice',
-  isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  createdBy: 'createdBy'
+  createdBy: 'createdBy',
+  description: 'description',
+  isActive: 'isActive'
 } as const
 
 export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
+
+
+export const InventoryItemScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  sku: 'sku',
+  unit: 'unit',
+  quantity: 'quantity',
+  reserved: 'reserved',
+  unitPrice: 'unitPrice',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type InventoryItemScalarFieldEnum = (typeof InventoryItemScalarFieldEnum)[keyof typeof InventoryItemScalarFieldEnum]
+
+
+export const ProjectMaterialScalarFieldEnum = {
+  id: 'id',
+  projectId: 'projectId',
+  inventoryItemId: 'inventoryItemId',
+  quantity: 'quantity',
+  reserved: 'reserved',
+  consumed: 'consumed',
+  createdAt: 'createdAt'
+} as const
+
+export type ProjectMaterialScalarFieldEnum = (typeof ProjectMaterialScalarFieldEnum)[keyof typeof ProjectMaterialScalarFieldEnum]
 
 
 export const SortOrder = {

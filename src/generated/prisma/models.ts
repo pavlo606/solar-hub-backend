@@ -11,4 +11,6 @@
 export type * from './models/User.js'
 export type * from './models/Client.js'
 export type * from './models/Project.js'
+export type * from './models/InventoryItem.js'
+export type * from './models/ProjectMaterial.js'
 export type * from './commonInputTypes.js'

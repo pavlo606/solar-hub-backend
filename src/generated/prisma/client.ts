@@ -52,3 +52,13 @@ export type Client = Prisma.ClientModel
  * 
  */
 export type Project = Prisma.ProjectModel
+/**
+ * Model InventoryItem
+ * 
+ */
+export type InventoryItem = Prisma.InventoryItemModel
+/**
+ * Model ProjectMaterial
+ * 
+ */
+export type ProjectMaterial = Prisma.ProjectMaterialModel

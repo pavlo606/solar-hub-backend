@@ -9,9 +9,20 @@ import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { ClientModule } from './modules/client/client.module';
 import { ProjectModule } from './modules/project/project.module';
+import { InventoryModule } from './modules/inventory/inventory.module';
+import { ProjectMaterialModule } from './modules/project-material/project-material.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env' }), PrismaModule, UserModule, AuthModule, ClientModule, ProjectModule],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env' }),
+    PrismaModule,
+    UserModule,
+    AuthModule,
+    ClientModule,
+    ProjectModule,
+    InventoryModule,
+    ProjectMaterialModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
