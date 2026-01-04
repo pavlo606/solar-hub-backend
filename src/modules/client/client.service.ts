@@ -8,7 +8,7 @@ import { Prisma } from '@/generated/prisma/client';
 @Injectable()
 export class ClientService {
   constructor(private readonly repo: ClientRepository) {}
-  
+
   async create(dto: CreateClientDto, userId: string) {
     return this.repo.create({
       ...dto,
@@ -28,18 +28,25 @@ export class ClientService {
     };
 
     const skip = (query.page - 1) * query.limit;
-    
+
+    const orderBy: Prisma.ClientOrderByWithAggregationInput = {
+      ...(query.sortBy
+        ? { [query.sortBy]: query.sortOrder }
+        : { createdAt: 'desc' }),
+    };
+
     const [items, total] = await Promise.all([
-      this.repo.getMany(where, skip, query.limit),
+      this.repo.getMany(where, orderBy, skip, query.limit),
       this.repo.count(where),
     ]);
-    
+
     return {
       items,
       meta: {
         total,
         page: query.page,
         limit: query.limit,
+        totalPages: Math.ceil(total / query.limit),
       },
     };
   }
@@ -57,6 +64,6 @@ export class ClientService {
   }
 
   async deleteSoft(id: string) {
-    return this.repo.update(id, { isActive: false })
+    return this.repo.update(id, { isActive: false });
   }
 }

@@ -10,13 +10,13 @@ export class ClientRepository {
     return this.prisma.client.create({ data });
   }
 
-  async getMany(where: Prisma.ClientWhereInput, skip: number, take: number) {
+  async getMany(where: Prisma.ClientWhereInput, orderBy: Prisma.ClientOrderByWithAggregationInput, skip: number, take: number) {
     return this.prisma.client.findMany({
       where,
       skip,
       take,
-      orderBy: { createdAt: 'desc' },
-      include: { projects: true },
+      orderBy,
+      include: { _count: { select: { projects: true } } }
     });
   }
 

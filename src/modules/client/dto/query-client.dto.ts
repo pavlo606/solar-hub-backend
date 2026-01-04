@@ -1,6 +1,6 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { IsInt, IsOptional, IsString, Min } from 'class-validator';
+import { IsEnum, IsInt, IsOptional, IsString, Min } from 'class-validator';
 
 export class QueryClientDto {
   @ApiPropertyOptional({
@@ -33,4 +33,22 @@ export class QueryClientDto {
   @IsInt()
   @Min(1)
   limit = 20;
+
+  @ApiPropertyOptional({
+    type: String,
+    description: 'SortBy',
+    required: false,
+  })
+  @IsOptional()
+  @IsString()
+  sortBy: string;
+
+  @ApiPropertyOptional({
+    type: String,
+    description: 'SortOrder',
+    required: false,
+  })
+  @IsOptional()
+  @IsEnum(['asc', 'desc'])
+  sortOrder: 'asc' | 'desc' = 'asc';
 }
