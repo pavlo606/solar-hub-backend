@@ -19,6 +19,11 @@ model User {
   updatedAt     DateTime @updatedAt
 }
 
+enum Role {
+  User
+  Admin
+}
+
 model Client {
   id        String    @id @default(uuid())
   name      String
@@ -50,6 +55,14 @@ model Project {
   projectMaterials ProjectMaterial[]
 }
 
+enum ProjectStatus {
+  DRAFT
+  APPROVED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
 model InventoryItem {
   id           String            @id @default(uuid())
   name         String
@@ -78,15 +91,28 @@ model ProjectMaterial {
   @@unique([projectId, inventoryItemId])
 }
 
-enum Role {
-  User
-  Admin
+model Employee {
+  id         String     @id @default(uuid())
+  firstName  String
+  lastName   String
+  phone      String?
+  email      String?
+  position   String
+  salaryType SalaryType
+  salaryRate Decimal
+
+  isActive   Boolean @default(true)
+
+  // userId String? @unique
+  // user        User?    @relation(fields: [userId], references: [id])
+
+  // assignments EmployeeAssignment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
-enum ProjectStatus {
-  DRAFT
-  APPROVED
-  IN_PROGRESS
-  COMPLETED
-  CANCELLED
+enum SalaryType {
+  FIXED
+  HOURLY
 }

@@ -26,3 +26,11 @@ export const ProjectStatus = {
 } as const
 
 export type ProjectStatus = (typeof ProjectStatus)[keyof typeof ProjectStatus]
+
+
+export const SalaryType = {
+  FIXED: 'FIXED',
+  HOURLY: 'HOURLY'
+} as const
+
+export type SalaryType = (typeof SalaryType)[keyof typeof SalaryType]

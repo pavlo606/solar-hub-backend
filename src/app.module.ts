@@ -11,6 +11,7 @@ import { ClientModule } from './modules/client/client.module';
 import { ProjectModule } from './modules/project/project.module';
 import { InventoryModule } from './modules/inventory/inventory.module';
 import { ProjectMaterialModule } from './modules/project-material/project-material.module';
+import { EmployeeModule } from './modules/employee/employee.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { ProjectMaterialModule } from './modules/project-material/project-materi
     ProjectModule,
     InventoryModule,
     ProjectMaterialModule,
+    EmployeeModule,
   ],
   controllers: [AppController],
   providers: [AppService],

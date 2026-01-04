@@ -62,3 +62,8 @@ export type InventoryItem = Prisma.InventoryItemModel
  * 
  */
 export type ProjectMaterial = Prisma.ProjectMaterialModel
+/**
+ * Model Employee
+ * 
+ */
+export type Employee = Prisma.EmployeeModel
